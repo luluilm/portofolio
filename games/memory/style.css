@@ -1,0 +1,145 @@
+:root {
+  --primary: #5a99e0;
+  --bg: #ffffff;
+  --text: #1c1c1e;
+  --tile-bg: #5a99e0;
+  --tile-match: #5a99e0;
+  --tile-wrong: #ffdada;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+.board {
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1.5rem;
+  width: max-content;
+}
+
+.board.grid-3x3 {
+  grid-template-columns: repeat(3, 60px);
+  grid-template-rows: repeat(3, 60px);
+}
+.board.grid-4x4 {
+  grid-template-columns: repeat(4, 60px);
+  grid-template-rows: repeat(4, 60px);
+}
+
+
+
+.tile {
+  width: 60px;
+  height: 60px;
+  background-color: var(--tile-bg);
+  border-radius: 10px;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.tile.revealed {
+  background-color: var(--tile-match);
+}
+
+.tile.wrong {
+  background-color: var(--tile-wrong);
+}
+
+.info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.restart-btn {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.restart-btn:hover {
+  background-color: #14664b;
+}
+
+/* Grid size presets */
+.board.grid-3x3 {
+  grid-template-columns: repeat(3, 60px);
+  grid-template-rows: repeat(3, 60px);
+}
+
+.board.grid-4x4 {
+  grid-template-columns: repeat(4, 60px);
+  grid-template-rows: repeat(4, 60px);
+}
+
+.board.grid-5x5 {
+  grid-template-columns: repeat(5, 60px);
+  grid-template-rows: repeat(5, 60px);
+}
+
+
+@media (max-width: 500px) {
+  .tile {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
