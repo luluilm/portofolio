@@ -1,3 +1,4 @@
+
 // Toggle Dark Mode
 function toggleMode() {
   // Toggle 'dark' class on the html element for Tailwind
@@ -19,6 +20,19 @@ function updaterToggleButtonText() {
   }
 }
 
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenu.classList.contains('hidden')) {
+    mobileMenu.classList.remove('hidden');
+    // Optional: Add animation class if needed, but transition logic works via hidden removal if css set up right.
+    // For simple fade/slide, usually we toggle class like 'translate-x-full' etc.
+    // Here we just toggle hidden. For better transition, we could use height or opacity.
+  } else {
+    mobileMenu.classList.add('hidden');
+  }
+}
+
 // Check for saved user preference or system preference on load
 window.onload = function () {
   // Check local storage or system preference
@@ -32,6 +46,20 @@ window.onload = function () {
 
   // Initialize Intersection Observer for scroll animations
   setupScrollObserver();
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function (event) {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+    // If menu is open (not hidden)
+    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+      // If click is NOT inside menu AND NOT inside button
+      if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    }
+  });
 
 };
 
@@ -93,4 +121,3 @@ var typed = new Typed('#typed-output', {
   backDelay: 2000,
   loop: true
 });
-

@@ -7,7 +7,7 @@
   <title>Decul | IT Student</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="icon" type="image/png" href="logo-decul.png">
+  <link rel="icon" type="image/png" href="img/logo-decul.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Load Typed.js -->
   <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
@@ -66,6 +66,9 @@
       }
       
       /* Custom Scrollbar */
+      html {
+        scroll-padding-top: 6rem; /* Adjust based on header height */
+      }
       ::-webkit-scrollbar {
         width: 10px;
       }
@@ -106,19 +109,80 @@
     class="fixed top-0 left-0 w-full z-50 bg-white/30 dark:bg-black/30 backdrop-blur-md border-b border-white/20 dark:border-white/10 p-4 md:p-8 flex justify-between items-center shadow-sm dark:shadow-white/5 transition-transform duration-300"
     id="main-header">
     <div
-      class="logo text-xl md:text-2xl font-bold text-primary dark:text-primary-dark flex flex-col sm:block items-start sm:items-center">
+      class="logo text-xl md:text-2xl font-bold text-primary dark:text-primary-dark flex flex-col sm:block items-start sm:items-center min-w-[200px]">
       <span><strong>Decul</strong> <span class="hidden sm:inline">|</span></span> <span id="typed-output"
         class="text-sm sm:text-2xl"></span>
     </div>
-    <button
-      class="toggle-mode cursor-pointer bg-transparent border-2 border-primary dark:border-primary-dark text-inherit px-3 py-2 md:px-4 md:py-2 rounded-lg font-bold transition-all duration-300 hover:bg-primary hover:text-bg-light dark:hover:bg-primary-dark dark:hover:text-bg-dark flex items-center justify-center min-w-[44px] min-h-[44px]"
-      onclick="toggleMode()">
-      <i class="fas fa-adjust md:hidden"></i><span class="hidden md:inline">Toggle Mode</span>
-    </button>
+
+    <!-- Right Side Wrapper (Nav + Toggle + Mobile Menu Button) -->
+    <div class="flex items-center gap-4 md:gap-6">
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex gap-6 font-medium text-primary dark:text-primary-dark items-center">
+        <a href="#home" class="hover:text-black dark:hover:text-white transition-colors relative group">
+          Home
+          <span
+            class="absolute left-0 bottom-0 w-0 h-0.5 bg-black dark:bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#projects" class="hover:text-black dark:hover:text-white transition-colors relative group">
+          Projects
+          <span
+            class="absolute left-0 bottom-0 w-0 h-0.5 bg-black dark:bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#prototype" class="hover:text-black dark:hover:text-white transition-colors relative group">
+          Prototype
+          <span
+            class="absolute left-0 bottom-0 w-0 h-0.5 bg-black dark:bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#experience" class="hover:text-black dark:hover:text-white transition-colors relative group">
+          Experience
+          <span
+            class="absolute left-0 bottom-0 w-0 h-0.5 bg-black dark:bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#about" class="hover:text-black dark:hover:text-white transition-colors relative group">
+          About
+          <span
+            class="absolute left-0 bottom-0 w-0 h-0.5 bg-black dark:bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </nav>
+
+      <button
+        class="toggle-mode cursor-pointer bg-transparent border-2 border-primary dark:border-primary-dark text-primary dark:text-primary-dark px-3 py-2 md:px-4 md:py-2 rounded-lg font-bold transition-all duration-300 hover:bg-primary hover:text-white dark:hover:bg-primary-dark dark:hover:text-black flex items-center justify-center min-w-[44px] min-h-[44px]"
+        onclick="toggleMode()">
+        <i class="fas fa-adjust md:hidden"></i><span class="hidden md:inline">Toggle Mode</span>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-primary dark:text-primary-dark text-2xl focus:outline-none"
+        onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu"
+      class="hidden absolute top-full left-0 w-full bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-white/20 dark:border-white/10 p-4 shadow-lg -z-10 transition-all duration-300">
+      <nav class="flex flex-col gap-4 font-medium text-center">
+        <a href="#home"
+          class="text-primary dark:text-primary-dark hover:text-black dark:hover:text-white transition-colors"
+          onclick="toggleMobileMenu()">Home</a>
+        <a href="#projects"
+          class="text-primary dark:text-primary-dark hover:text-black dark:hover:text-white transition-colors"
+          onclick="toggleMobileMenu()">Projects</a>
+        <a href="#prototype"
+          class="text-primary dark:text-primary-dark hover:text-black dark:hover:text-white transition-colors"
+          onclick="toggleMobileMenu()">Prototype</a>
+        <a href="#experience"
+          class="text-primary dark:text-primary-dark hover:text-black dark:hover:text-white transition-colors"
+          onclick="toggleMobileMenu()">Experience</a>
+        <a href="#about"
+          class="text-primary dark:text-primary-dark hover:text-black dark:hover:text-white transition-colors"
+          onclick="toggleMobileMenu()">About</a>
+      </nav>
+    </div>
   </header>
 
   <main class="pt-40 md:pt-32 p-4 md:p-8 max-w-4xl mx-auto text-justify">
-    <section class="hero-section mb-12 fade-in-section">
+    <section id="home" class="hero-section mb-12 fade-in-section">
       <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 text-primary dark:text-primary-dark text-left">Hi, I'm
         Decul 👋
       </h1>
@@ -132,7 +196,7 @@
         digital solutions.</p>
     </section>
 
-    <section class="mb-12 fade-in-section">
+    <section id="projects" class="mb-12 fade-in-section">
       <h2
         class="text-2xl md:text-3xl font-bold mt-12 mb-6 border-b-2 border-primary dark:border-primary-dark pb-2 text-primary dark:text-primary-dark text-left">
         Projects</h2>
@@ -142,7 +206,8 @@
           class="project-card bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-xl overflow-hidden shadow-lg dark:shadow-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary dark:hover:border-primary group w-full">
           <a href="https://luluilm.github.io/Bank-Kalteng/" target="_blank"
             class="block h-full flex flex-col no-underline">
-            <img src="Screenshot of Bank Kalteng Website Product.jpg" alt="Screenshot of Bank Kalteng Website Product"
+            <img src="img/Screenshot of Bank Kalteng Website Product.jpg"
+              alt="Screenshot of Bank Kalteng Website Product"
               class="w-full h-48 object-cover block transition-transform duration-500 group-hover:scale-105">
             <div class="project-content p-6 text-left flex-grow flex flex-col">
               <h3
@@ -160,7 +225,7 @@
         <div
           class="project-card bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-xl overflow-hidden shadow-lg dark:shadow-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary dark:hover:border-primary group w-full">
           <a href="https://youtu.be/5AqrC20WBKc" target="_blank" class="block h-full flex flex-col no-underline">
-            <img src="Screenshot of ComPro BSB.jpeg" alt="Screenshot of ComPro BSB"
+            <img src="img/Screenshot of ComPro BSB.jpeg" alt="Screenshot of ComPro BSB"
               class="w-full h-48 object-cover block transition-transform duration-500 group-hover:scale-105">
             <div class="project-content p-6 text-left flex-grow flex flex-col">
               <h3
@@ -180,7 +245,7 @@
           class="project-card bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-xl overflow-hidden shadow-lg dark:shadow-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary dark:hover:border-primary group w-full">
           <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDk2MzMxMDAwMzYyOTcz?story_media_id=3819087786016338065&igsh=MWdqM2M5MTlsZnh6OQ=="
             target="_blank" class="block h-full flex flex-col no-underline">
-            <img src="Screenshot of Instagram BSB.jpeg" alt="Screenshot of Instagram BSB"
+            <img src="img/Screenshot of Instagram BSB.jpeg" alt="Screenshot of Instagram BSB"
               class="w-full h-48 object-cover block transition-transform duration-500 group-hover:scale-105">
             <div class="project-content p-6 text-left flex-grow flex flex-col">
               <h3
@@ -199,7 +264,7 @@
       </div>
     </section>
 
-    <section class="mb-12 fade-in-section">
+    <section id="prototype" class="mb-12 fade-in-section">
       <h2
         class="text-2xl md:text-3xl font-bold mt-12 mb-6 border-b-2 border-primary dark:border-primary-dark pb-2 text-primary dark:text-primary-dark text-left">
         Prototype</h2>
@@ -209,7 +274,7 @@
           class="project-card bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-xl overflow-hidden shadow-lg dark:shadow-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary dark:hover:border-primary group w-full">
           <a href="https://luluilm.github.io/demo-casamia/" target="_blank"
             class="block h-full flex flex-col no-underline">
-            <img src="Screenshot Demo Casamia.jpeg" alt="Screenshot of Demo Casamia"
+            <img src="img/Screenshot Demo Casamia.jpeg" alt="Screenshot of Demo Casamia"
               class="w-full h-48 object-cover block transition-transform duration-500 group-hover:scale-105">
             <div class="project-content p-6 text-left flex-grow flex flex-col">
               <h3
@@ -226,7 +291,35 @@
       </div>
     </section>
 
-    <section class="mb-12 fade-in-section">
+    <section id="experience" class="mb-12 fade-in-section">
+      <h2
+        class="text-2xl md:text-3xl font-bold mt-12 mb-6 border-b-2 border-primary dark:border-primary-dark pb-2 text-primary dark:text-primary-dark text-left">
+        Experience</h2>
+      <div class="project-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+        <!-- Project Card -->
+        <div
+          class="project-card bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-xl overflow-hidden shadow-lg dark:shadow-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary dark:hover:border-primary group w-full">
+          <a href="https://drive.google.com/file/d/1LjkKopUnQheYRUQhUweCj24oAvqBckW4/view?usp=sharing" target="_blank"
+            class="block h-full flex flex-col no-underline">
+            <img src="img/Cyclo.png" alt="Cyclorganizer"
+              class="w-full h-48 object-cover block transition-transform duration-500 group-hover:scale-105">
+            <div class="project-content p-6 text-left flex-grow flex flex-col">
+              <h3
+                class="text-2xl font-bold mb-2 text-text-light dark:text-text-dark group-hover:text-primary dark:group-hover:text-primary-dark transition-colors">
+                Cyclorganizer</h3>
+              <p class="text-sm text-text-light dark:text-text-dark text-justify flex-grow">Finalist of a Business Idea
+                Competition with Cyclo, an end-to-end digital ecosystem for waste management. Served as Team Leader of
+                Cyclorganizer, leading the development of the business idea, value proposition, and pitch deck.</p>
+              <span
+                class="mt-4 text-primary dark:text-primary-dark font-semibold group-hover:translate-x-2 transition-transform inline-block">View
+                Project &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="mb-12 fade-in-section">
       <h2
         class="text-2xl md:text-3xl font-bold mt-12 mb-6 border-b-2 border-primary dark:border-primary-dark pb-2 text-primary dark:text-primary-dark text-left">
         Skills</h2>
